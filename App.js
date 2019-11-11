@@ -4,14 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          height: 100,
-          width: '100%',
-          borderColor: 'gray',
-          borderWidth: 1,
-        }}
-      ></View>
+      <View style={styles.itemContainer}></View>
     </View>
   );
 }
@@ -22,5 +15,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  itemContainer: {
+    height: 100,
+    width: '100%',
+    borderColor: 'gray',
+    borderWidth: 1,
   },
 });
