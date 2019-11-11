@@ -11,7 +11,14 @@ export default function App() {
             source={{ uri: 'https://picsum.photos/id/10/200/200' }}
           />
         </View>
-        <View style={styles.rightContainer}></View>
+        <View style={styles.rightContainer}>
+          <Text numberOfLines={3}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam
+          </Text>
+          <Text>ReactNews</Text>
+        </View>
       </View>
     </View>
   );
