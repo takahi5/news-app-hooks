@@ -13,8 +13,8 @@ const ArticleScreen = props => {
   const [url, setUrl] = useState();
 
   useEffect(() => {
-    const { url } = props.navigation.state.params;
-    setUrl(url);
+    const { article } = props.navigation.state.params;
+    setUrl(article.url);
   }, []);
 
   return (

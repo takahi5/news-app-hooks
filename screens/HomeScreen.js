@@ -44,7 +44,7 @@ const HomeScreen = props => {
             title={item.title}
             author={item.author}
             onPress={() =>
-              props.navigation.navigate('Article', { url: item.url })
+              props.navigation.navigate('Article', { article: item })
             }
           />
         )}
