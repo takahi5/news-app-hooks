@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 
 import ListItem from './components/ListItem';
 import articles from './dummies/articles';
@@ -23,7 +23,7 @@ export default function App() {
     );
   });
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={articles}
         renderItem={({ item }) => (
@@ -35,6 +35,6 @@ export default function App() {
         )}
         keyExtractor={(item, index) => index.toString()}
       />
-    </View>
+    </SafeAreaView>
   );
 }
