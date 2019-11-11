@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
+import axios from 'axios';
 
 import ListItem from './components/ListItem';
-import dummyArticles from './dummies/articles';
+
+const URL = `https://newsapi.org/v2/top-headlines?country=jp&apiKey=${Constants.manifest.extra.newsApiKey}`;
 
 const styles = StyleSheet.create({
   container: {
@@ -17,12 +19,17 @@ export default function App() {
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    console.log('did mount');
+    fetchArticles();
   }, []);
 
-  const refreshArticles = () => {
+  const fetchArticles = async () => {
+    const res = await axios.get(URL);
+    setArticles(res.data.articles);
+  };
+
+  const refreshArticles = async () => {
     setRefreshing(true);
-    setArticles(dummyArticles);
+    await fetchArticles();
     setRefreshing(false);
   };
 
