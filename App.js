@@ -33,6 +33,7 @@ export default function App() {
             author={item.author}
           />
         )}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
   );
