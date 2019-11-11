@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -16,7 +16,10 @@ export default function App() {
   const [articles, setArticles] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-  console.log(Constants.manifest.extra.newsApiKey);
+  useEffect(() => {
+    console.log('did mount');
+  }, []);
+
   const refreshArticles = () => {
     setRefreshing(true);
     setArticles(dummyArticles);
