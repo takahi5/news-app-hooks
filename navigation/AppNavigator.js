@@ -18,9 +18,21 @@ const HomeStack = createStackNavigator({
   },
 });
 
+const ClipStack = createStackNavigator({
+  Clip: {
+    screen: ClipScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Article: {
+    screen: ArticleScreen,
+  },
+});
+
 const TabNavigator = createBottomTabNavigator({
   Home: HomeStack,
-  Clip: ClipScreen,
+  Clip: ClipStack,
 });
 
 export default createAppContainer(TabNavigator);
