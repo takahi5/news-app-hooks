@@ -43,7 +43,9 @@ const HomeScreen = props => {
             imageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={() => props.navigation.navigate('Article')}
+            onPress={() =>
+              props.navigation.navigate('Article', { url: item.url })
+            }
           />
         )}
         keyExtractor={(item, index) => index.toString()}
