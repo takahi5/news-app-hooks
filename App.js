@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 import ListItem from './components/ListItem';
+import articles from './dummies/articles';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,13 +14,14 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
-  return (
-    <View style={styles.container}>
+  const items = articles.map(article => {
+    return (
       <ListItem
-        imageUrl="https://picsum.photos/id/10/200/200"
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
-        author="TechNews"
+        imageUrl={article.urlToImage}
+        title={article.title}
+        author={article.author}
       />
-    </View>
-  );
+    );
+  });
+  return <View style={styles.container}>{items}</View>;
 }
