@@ -23,7 +23,8 @@
     "redux": "^4.0.4"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.1.0"
+    "babel-preset-expo": "^7.1.0",
+    "remote-redux-devtools": "^0.5.16"
   },
   "private": true
 }
