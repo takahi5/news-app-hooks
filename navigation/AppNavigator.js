@@ -7,6 +7,9 @@ export default createAppContainer(
   createStackNavigator({
     Home: {
       screen: HomeScreen,
+      navigationOptions: {
+        header: null,
+      },
     },
   }),
 );
