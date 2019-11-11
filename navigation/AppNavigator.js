@@ -1,7 +1,8 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
-import HomeScreen from '../screens/HomeScreen';
 import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from '../screens/HomeScreen';
+import ArticleScreen from '../screens/ArticleScreen';
 
 export default createAppContainer(
   createStackNavigator({
@@ -10,6 +11,9 @@ export default createAppContainer(
       navigationOptions: {
         header: null,
       },
+    },
+    Article: {
+      screen: ArticleScreen,
     },
   }),
 );

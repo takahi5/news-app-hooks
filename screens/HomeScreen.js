@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   const [articles, setArticles] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -43,6 +43,7 @@ const HomeScreen = () => {
             imageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
+            onPress={() => props.navigation.navigate('Article')}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
