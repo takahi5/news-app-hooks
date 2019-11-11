@@ -26,8 +26,16 @@ const ArticleScreen = props => {
     setUrl(article.url);
   }, []);
 
+  const isCliped = () => {
+    const { article } = props.navigation.state.params;
+    return props.user.clips.some(clip => clip.url === article.url);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={{ margin: 10, fontSize: 30 }}>
+        {isCliped() ? 'true' : 'false'}
+      </Text>
       <TouchableOpacity
         onPress={() => {
           props.addClip({ clip: props.navigation.state.params.article });
