@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
 
 import ListItem from './components/ListItem';
-import articles from './dummies/articles';
+import dummyArticles from './dummies/articles';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +12,15 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  const [articles, setArticles] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const refreshArticles = () => {
+    setRefreshing(true);
+    setArticles(dummyArticles);
+    setRefreshing(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -24,6 +33,8 @@ export default function App() {
           />
         )}
         keyExtractor={(item, index) => index.toString()}
+        onRefresh={refreshArticles}
+        refreshing={refreshing}
       />
     </SafeAreaView>
   );
