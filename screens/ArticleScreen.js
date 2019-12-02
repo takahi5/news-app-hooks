@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
-
 import { connect } from 'react-redux';
 import { addClip, deleteClip } from '../store/actions/user';
 import ClipButton from '../components/ClipButton';
+import Loading from '../components/Loading';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,7 +37,13 @@ const ArticleScreen = props => {
   return (
     <SafeAreaView style={styles.container}>
       <ClipButton onPress={toggleClip} enabled={isClipped()} />
-      <WebView source={{ uri: url }} />
+      <WebView
+        source={{ uri: url }}
+        startInLoadingState={true}
+        renderLoading={() => {
+          return <Loading />;
+        }}
+      />
     </SafeAreaView>
   );
 };
@@ -55,7 +55,4 @@ const mapStateProps = state => {
 };
 
 const mapDispatchToProps = { addClip, deleteClip };
-export default connect(
-  mapStateProps,
-  mapDispatchToProps,
-)(ArticleScreen);
+export default connect(mapStateProps, mapDispatchToProps)(ArticleScreen);

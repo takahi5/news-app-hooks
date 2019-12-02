@@ -5,6 +5,7 @@ import Constants from 'expo-constants';
 import axios from 'axios';
 
 import ListItem from '../components/ListItem';
+import Loading from '../components/Loading';
 
 const URL = `https://newsapi.org/v2/top-headlines?country=jp&apiKey=${Constants.manifest.extra.newsApiKey}`;
 
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
 
 const HomeScreen = props => {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
@@ -24,8 +26,10 @@ const HomeScreen = props => {
   }, []);
 
   const fetchArticles = async () => {
+    setLoading(true);
     const res = await axios.get(URL);
     setArticles(res.data.articles);
+    setLoading(false);
   };
 
   const refreshArticles = async () => {
@@ -52,6 +56,7 @@ const HomeScreen = props => {
         onRefresh={refreshArticles}
         refreshing={refreshing}
       />
+      {loading && <Loading />}
     </SafeAreaView>
   );
 };
