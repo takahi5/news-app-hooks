@@ -23,7 +23,7 @@ const ClipStack = createStackNavigator({
   Clip: {
     screen: ClipScreen,
     navigationOptions: {
-      header: null,
+      title: 'クリップ一覧',
     },
   },
   Article: {
